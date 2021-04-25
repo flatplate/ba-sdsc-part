@@ -1,0 +1,81 @@
+module.exports = {
+    purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        extend: {
+            colors: {
+                primary: {
+                    900: "#02312a",
+                    800: "#036355",
+                    700: "#05947f",
+                    600: "#06B499",
+                    500: "#08f7d3",
+                    400: "#39f9dc",
+                    300: "#6bfae5",
+                    200: "#9cfcee",
+                    100: "#cefdf6",
+                },
+                secondary: {
+                    900: "#000F14",
+                    800: "#004D66",
+                    700: "#007EA9",
+                    600: "#0099CC",
+                    500: "#0AC2FF",
+                    400: "#33CCFF",
+                    300: "#5CD6FF",
+                    200: "#85E0FF",
+                    100: "#C2F0FF",
+                },
+                ternary: {
+                    900: "#3D3300",
+                    800: "#665500",
+                    700: "#B89900",
+                    600: "#F5CC00",
+                    500: "#FFDD33",
+                    400: "#FFE45C",
+                    300: "#FFEB85",
+                    200: "#FFF1AD",
+                    100: "#FFF8D6",
+                },
+                primaryGradient: {
+                    1: "#06b499",
+                    2: "#00b6a1",
+                    3: "#00b7aa",
+                    4: "#00b8b2",
+                    5: "#00babb",
+                    6: "#00bbc3",
+                    7: "#00bccb",
+                    8: "#00bdd3",
+                    9: "#00bddb",
+                    10: "#00bee2",
+                    11: "#00bee9",
+                    12: "#00beef",
+                    13: "#00bef5",
+                    14: "#00befa",
+                    15: "#00beff",
+                },
+            },
+            width: {
+                112: "28rem",
+                128: "32rem",
+                256: "64rem",
+            },
+            inset: {
+                112: "28rem",
+                128: "32rem",
+                256: "64rem",
+                "-96": "-24rem",
+                "-112": "-28rem",
+                "-128": "-32rem",
+                "-256": "-64rem",
+            },
+        },
+    },
+    variants: {
+        extend: {
+            borderWidth: ["hover"],
+            padding: ["hover"]
+        },
+    },
+    plugins: [require("@tailwindcss/forms")],
+};
