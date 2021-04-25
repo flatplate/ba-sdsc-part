@@ -11,11 +11,11 @@ ENV PATH /react/app/node_modules/.bin:$PATH
 # install app dependencies
 COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
+# add app
+COPY ./app ./
 RUN npm install --silent
 RUN npm install react-scripts@3.4.1 -g --silent
 
-# add app
-COPY ./app ./
 
 RUN npm run build
 
@@ -27,11 +27,11 @@ ENV PATH /react/adminapp/node_modules/.bin:$PATH
 # install app dependencies
 COPY ./adminapp/package.json ./
 COPY ./adminapp/package-lock.json ./
+# add app
+COPY ./adminapp ./
 RUN npm install --silent
 RUN npm install react-scripts@3.4.1 -g --silent
 
-# add app
-COPY ./adminapp ./
 
 RUN npm run build
 
