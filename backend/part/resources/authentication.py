@@ -23,8 +23,8 @@ class AuthenticationResource(Resource):
             # TODO this verify shouldn't really be here
             if verify(bytes(user._password), args["password"]):
                 return makeResponse({"success": True, "data": token}, headers={
-                    "Set-Cookie": "jwt=" + token + ";Secure;HttpOnly;SameSite=Strict;Expires=" +
-                                  (datetime.utcnow() + timedelta(days=30)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+                    "Set-Cookie": "jwt=" + token + ";Secure;HttpOnly;SameSite=Strict;Max-Age=" +
+                                  str(timedelta(days=30).total_seconds())
                 })
         except User.DoesNotExist as e:
             pass
