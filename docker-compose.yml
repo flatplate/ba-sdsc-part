@@ -18,9 +18,5 @@ services:
       dockerfile: ./Dockerfile.backend.prod
     environment:
       - DB_URL=mongodb://database:27017/part
-    ports:
-      - "5000:5000"
   database:
     image: "mongo:latest"
-    ports:
-      - "27018:27017"
