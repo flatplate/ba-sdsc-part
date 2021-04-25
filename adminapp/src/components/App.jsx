@@ -6,7 +6,6 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import AlertComponent from "./alert/AlertComponent";
-import SurveyResults from "./SurveyResults";
 import Questions from "./questions/Questions";
 import Surveys from "./surveys/Surveys";
 import NewSurvey from "./newSurvey/NewSurvey";
@@ -28,7 +27,7 @@ class App extends React.Component {
         return (
             <div className="App justify-center flex items-center mt-24">
                 <AlertComponent />
-                <BrowserRouter>
+                <BrowserRouter basename="/admin">
                     <Switch>
                         <Route path="/login" exact>
                             <Login api={this.api} />

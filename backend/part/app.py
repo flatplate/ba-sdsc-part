@@ -57,6 +57,8 @@ api.add_resource(GetEvaluationsResource, '/api/v1/getEvaluations')
 api.add_resource(GetEvaluationByIdResource, '/api/v1/evaluationById')
 api.add_resource(DeleteEvaluationResource, '/api/v1/deleteEvaluation')
 api.add_resource(DeleteSurveyResource, '/api/v1/deleteSurvey')
+api.add_resource(LogoutResource, '/api/v1/logout')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    print("alksdfasdf")
+    app.run(host='0.0.0.0', port=5000, debug=True)

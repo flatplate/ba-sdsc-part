@@ -20,7 +20,7 @@ class TextInput extends React.Component {
     render() {
         return (
             <div
-                className={`relative ${!this.props.noBorder ? "border-b" : ""} mb-2 outline-none border-opacity-25 focus-within:border-primary-400 ${this.props.className}`}
+                className={`relative ${!this.props.noBorder ? "border-b" : ""} mb-2 outline-none border-opacity-25 focus-within:border-primary-600 ${this.props.className}`}
             >
                 <input
                     className={[

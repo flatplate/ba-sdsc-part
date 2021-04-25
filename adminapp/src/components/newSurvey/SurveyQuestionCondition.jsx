@@ -60,7 +60,7 @@ class SurveyQuestionCondition extends React.Component {
                     </select>
                 </div>
                 <div className="flex flex-initial m-1">
-                    <Button textSize="sm" onClick={this.props.onAddInternalCondition}>And</Button>
+                    <Button textSize="text-sm" onClick={this.props.onAddInternalCondition}>And</Button>
                 </div>
             </div>
         );

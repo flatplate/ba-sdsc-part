@@ -79,14 +79,14 @@ class FileDropQuestion extends React.Component {
         } else if (this.state.columnsReady) {
             iconElement = (
                 <FontAwesomeIcon
-                    className="text-8xl text-primary-400 w-full"
+                    className="text-8xl text-primary-600 w-full"
                     icon={faCheckCircle}
                 />
             );
         } else {
             iconElement = (
                 <FontAwesomeIcon
-                    className="text-8xl text-primary-400 w-full"
+                    className="text-8xl text-primary-600 w-full"
                     icon={faCircleNotch}
                     spin
                 />

@@ -6,20 +6,71 @@ class Button extends React.Component {
     }
 
     render() {
-        let color = this.props.color || "primary";
-        let backgroundColor = this.props.outline ? "white" : color;
-        let textColor = this.props.outline ? color : "white";
-        let textSize = this.props.textSize ? "text-" + this.props.textSize : "text-lg";
+        // This is done to avoid the css optimizations done by tailwind later on
+        const borderColorString =
+            this.props.color === "primary"
+                ? "border-primary-600"
+                : this.props.color === "secondary"
+                ? "border-secondary-600"
+                : this.props.color === "ternary"
+                ? "border-ternary-600"
+                : "border-primary-600";
+        const hoverBorderColorString =
+            this.props.color === "primary"
+                ? "hover:border-primary-500"
+                : this.props.color === "secondary"
+                ? "hover:border-secondary-500"
+                : this.props.color === "ternary"
+                ? "hover:border-ternary-500"
+                : "hover:border-primary-500";
+        const backgroundColorString = this.props.outline
+            ? "bg-white"
+            : this.props.color === "primary"
+            ? "bg-primary-600"
+            : this.props.color === "secondary"
+            ? "bg-secondary-600"
+            : this.props.color === "ternary"
+            ? "bg-ternary-600"
+            : "bg-primary-600";
+        const backgroundHoverString = this.props.outline
+            ? "hover:bg-white"
+            : this.props.color === "primary"
+            ? "hover:bg-primary-500"
+            : this.props.color === "secondary"
+            ? "hover:bg-secondary-500"
+            : this.props.color === "ternary"
+            ? "hover:bg-ternary-500"
+            : "hover:bg-primary-500";
+        const textColorString = this.props.outline
+            ? this.props.color === "primary"
+                ? "text-primary-600"
+                : this.props.color === "secondary"
+                ? "text-secondary-600"
+                : this.props.color === "ternary"
+                ? "text-ternary-600"
+                : "text-primary-600"
+            : "text-white";
+        const textHoverString = this.props.outline
+            ? this.props.color === "primary"
+                ? "hover:text-primary-500"
+                : this.props.color === "secondary"
+                ? "hover:text-secondary-500"
+                : this.props.color === "ternary"
+                ? "hover:text-ternary-500"
+                : "hover:text-primary-500"
+            : "hover:text-white";
+
+        let textSize = this.props.textSize || "text-lg";
 
         let classes = [
             "rounded-full",
             "border",
-            "border-" + color + "-600",
-            "hover:border-" + color + "-500",
-            "bg-" + backgroundColor + "-600",
-            "text-" + textColor + (this.props.outline ? "-600" : ""),
-            "hover:bg-" + backgroundColor + "-500",
-            "hover:text-" + textColor + (this.props.outline ? "-500" : ""),
+            borderColorString,
+            hoverBorderColorString,
+            backgroundColorString,
+            textColorString,
+            backgroundHoverString,
+            textHoverString,
             "px-4",
             "py-1",
             "inline-block",
@@ -36,10 +87,10 @@ class Button extends React.Component {
 
         return (
             <div className={classes.join(" ")} {...this.props}>
-                {this.props.leftLabel !== undefined && (<span className="float-left pr-2 text-sm font-bold align-middle">{this.props.leftLabel}</span>)}
-                <span className="w-full text-center">
-                    {this.props.children}
-                </span>
+                {this.props.leftLabel !== undefined && (
+                    <span className="float-left pr-2 text-sm font-bold align-middle">{this.props.leftLabel}</span>
+                )}
+                <span className="w-full text-center">{this.props.children}</span>
             </div>
         );
     }

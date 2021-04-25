@@ -6,19 +6,27 @@ class AlertBox extends React.Component {
     }
 
     render() {
-        let backgroundColor;
+        let backgroundColorString;
+        let textColorString;
+        let borderColorString;
         switch (this.props.type) {
             case "info":
-                backgroundColor = "blue";
+                backgroundColorString = "bg-blue-100";
+                textColorString = "text-blue-900";
+                borderColorString = "border-blue-700"
                 break;
             case "error":
-                backgroundColor = "red";
+                backgroundColorString = "bg-red-100";
+                textColorString = "text-red-900";
+                borderColorString = "border-red-700"
                 break;
             default:
-                backgroundColor = "primary";
+                backgroundColorString = "bg-primary-100";
+                textColorString = "text-primary-900";
+                borderColorString = "border-primary-700"
         }
         return (
-            <div className={`text-center text-md text-${backgroundColor}-900 w-128 p-2 cursor-pointer shadow-lg bg-${backgroundColor}-100 border-l-8 border-${backgroundColor}-700`} onClick={this.props.onClick}>
+            <div className={`text-center text-md ${backgroundColorString} w-128 p-2 cursor-pointer shadow-lg ${textColorString} border-l-8 ${borderColorString}`} onClick={this.props.onClick}>
                 {this.props.children}
             </div>
         )

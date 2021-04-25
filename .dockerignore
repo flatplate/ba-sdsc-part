@@ -1,0 +1,9 @@
+app/node_modules
+adminapp/node_modules
+app/build
+adminapp/build
+backend/venv
+.dockerignore
+Dockerfile
+Dockerfile.backend.prod
+Dockerfile.forntend.prod

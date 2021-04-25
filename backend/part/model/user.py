@@ -1,7 +1,9 @@
+from bson import ObjectId
 from pymodm import MongoModel, EmbeddedMongoModel, fields
 from pymongo import IndexModel
 from datetime import datetime
-from uuid import uuid4
+from uuid import uuid4, UUID
+
 
 class User(MongoModel):
     username = fields.CharField()
@@ -11,6 +13,10 @@ class User(MongoModel):
     roles = fields.ListField(field=fields.CharField())
     id = fields.UUIDField(default=uuid4)
     _invalidateAt = fields.DateTimeField(default=datetime.now)
+
+    @classmethod
+    def getById(cls, uid):
+        return cls.objects.raw({"id": UUID(uid)}).first()
 
     class Meta:
         indexes = [IndexModel([('username', 1)], unique=True),
