@@ -58,7 +58,7 @@ def authorized(requiredRoles: List[str] = None):
                 request.context = newTokenData["context"]
                 res = func(*args, **kwargs)
                 res.headers["Set-Cookie"] = "jwt=" + newToken + ";Secure;HttpOnly;SameSite=Strict;Max-Age=" \
-                                            + str(timedelta(days=30).total_seconds())
+                                            + str(int(timedelta(days=30).total_seconds()))
                 return res
             except jwt.DecodeError:
                 raise NotAuthenticatedException()

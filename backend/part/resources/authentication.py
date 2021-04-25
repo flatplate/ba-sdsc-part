@@ -24,7 +24,7 @@ class AuthenticationResource(Resource):
             if verify(bytes(user._password), args["password"]):
                 return makeResponse({"success": True, "data": token}, headers={
                     "Set-Cookie": "jwt=" + token + ";Secure;HttpOnly;SameSite=Strict;Max-Age=" +
-                                  str(timedelta(days=30).total_seconds())
+                                  str(int(timedelta(days=30).total_seconds()))
                 })
         except User.DoesNotExist as e:
             pass
