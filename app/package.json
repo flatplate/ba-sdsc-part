@@ -16,6 +16,7 @@
         "autoprefixer": "^9.8.6",
         "immer": "^8.0.1",
         "marked": "^2.0.3",
+        "partjs": "https://gitpkg.now.sh/flatplate/ba-sdsc-part/partjs?main",
         "postcss": "^7.0.35",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
@@ -26,8 +27,7 @@
         "react-scrollbars-custom": "^4.0.25",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
         "uuid": "^8.3.2",
-        "web-vitals": "^1.0.1",
-        "partjs": "flatplate/ba-sdsc-part/partjs"
+        "web-vitals": "^1.0.1"
     },
     "scripts": {
         "start": "craco start",
