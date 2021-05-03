@@ -58,6 +58,7 @@ api.add_resource(GetEvaluationByIdResource, '/api/v1/evaluationById')
 api.add_resource(DeleteEvaluationResource, '/api/v1/deleteEvaluation')
 api.add_resource(DeleteSurveyResource, '/api/v1/deleteSurvey')
 api.add_resource(LogoutResource, '/api/v1/logout')
+api.add_resource(GetResponseResource, '/api/v1/getResponse')
 
 if __name__ == "__main__":
     print("alksdfasdf")

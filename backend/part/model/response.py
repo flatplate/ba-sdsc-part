@@ -46,3 +46,7 @@ class Response(MongoModel, MongoModelDictionaryConvertible):
     @classmethod
     def getAllSortedByTimestamp(cls):
         return cls.objects.raw({}).order_by(ordering=[("_createdAt", DESCENDING)])
+
+    @classmethod
+    def getById(cls, id_):
+        return cls.objects.raw({"_id": ObjectId(id_)}).first()

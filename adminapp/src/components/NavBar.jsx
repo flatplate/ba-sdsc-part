@@ -120,8 +120,8 @@ class NavBar extends React.Component {
                     <div>
                         <div
                             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white cursor-pointer"
-                            onClick={() => this.api.logout()}
-                        >
+                            onClick={() => this.api.logout().then(() => window.location.reload())}
+                            >
                             Logout
                         </div>
                     </div>

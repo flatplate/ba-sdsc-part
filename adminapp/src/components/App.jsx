@@ -12,6 +12,7 @@ import NewSurvey from "./newSurvey/NewSurvey";
 import Responses from "./responses/Responses";
 import Evaluations from "./evaluation/Evaluations";
 import NewEvaluation from "./evaluation/NewEvaluation";
+import Response from "./responses/Response";
 
 class App extends React.Component {
     constructor(props, context) {
@@ -56,6 +57,9 @@ class App extends React.Component {
                                     </PrivateRoute>
                                     <PrivateRoute path="/responses" api={this.api} exact>
                                         <Responses api={this.api} />
+                                    </PrivateRoute>
+                                    <PrivateRoute path="/responses/:id" api={this.api} exact>
+                                        <Response api={this.api} />
                                     </PrivateRoute>
                                     <PrivateRoute path="/evaluation" api={this.api} exact>
                                         <Evaluations api={this.api} />

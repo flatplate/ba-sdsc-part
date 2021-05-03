@@ -1,0 +1,10 @@
+pymodm~=0.4.3
+flask~=1.1.2
+flask-restful
+flask-cors
+pyjwt~=2.0.1
+pymongo~=3.11.3
+Werkzeug~=1.0.1
+pandas~=1.2.4
+clevercsv~=0.6.7
+messytables~=0.15.2

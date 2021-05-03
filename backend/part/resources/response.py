@@ -10,7 +10,6 @@ from part.evaluation.data import getDataEvaluationStrategyByName, AbstractDataEv
 from part.evaluation.evaluation import calculateMetricScores, selectResultClass
 from part.model.question import Question, DataQuestion
 from part.model.response import Response, QuestionResponse
-from part.model.survey import Survey
 from part.util.response import makeResponse
 
 import pandas
@@ -56,3 +55,17 @@ class GetResponsesResource(Resource):
         allResponses = Response.getAllSortedByTimestamp()
         allResponsesJson = {"data": [response.toDictionary(omitPrivateFields=False) for response in allResponses]}
         return makeResponse(allResponsesJson)
+
+
+getResponseRequestParser = reqparse.RequestParser()
+getResponseRequestParser.add_argument("id", type=str)
+
+
+class GetResponseResource(Resource):
+    method_decorators = [authorized()]
+
+    def get(self):
+        args = getResponseRequestParser.parse_args()
+        id_ = args["id"]
+        response = Response.getById(id_)
+        return makeResponse({"data": response.toDictionary(omitPrivateFields=False)})

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ResponseCard from "./ResponseCard";
 
 class Responses extends React.Component {
@@ -16,7 +17,11 @@ class Responses extends React.Component {
             <div className="flex justify-center">
                 <div className="w-256 space-y-12">
                     {this.state.responses.map((response) => (
-                        <ResponseCard response={response}/>
+                        <div>
+                            <Link to={`responses/${response._id}`}>
+                                <ResponseCard response={response} />
+                            </Link>
+                        </div>
                     ))}
                 </div>
             </div>

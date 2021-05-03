@@ -11,9 +11,8 @@ class ResponseCard extends React.Component {
 
     render() {
         return (
-            <Card className="rounded-full">
+            <Card className="rounded-full hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-row justify-between">
-                    {/* Left part with svg and score */}
                     <div>
                         <div className="rounded-full w-12 h-12 bg-gradient-to-tr mr-2 hover:bg-gradient-to-r from-primary-500 to-secondary-500 -m-4 items-center flex justify-center">
                             <div className="rounded-full w-9 h-9 bg-white text-center text-2xl text-primary-500 flex items-center justify-center">
