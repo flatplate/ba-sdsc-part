@@ -20,3 +20,9 @@ services:
       - DB_URL=mongodb://database:27017/part
   database:
     image: "mongo:latest"
+    volumes:
+      - dbvolume:/etc/mongo
+  
+volumes:
+  dbvolume:
+    external: false
