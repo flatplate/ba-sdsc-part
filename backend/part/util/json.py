@@ -1,10 +1,10 @@
 import json
 import datetime
+from uuid import UUID
+
 from bson.timestamp import Timestamp
 from bson.objectid import ObjectId
 from messytables import DateType
-
-from part.model.util import DictionaryConvertible
 
 
 class CustomEncoder(json.JSONEncoder):
@@ -21,4 +21,6 @@ class CustomEncoder(json.JSONEncoder):
             print(obj.format)
             print(obj)
             return "Date"
+        if isinstance(obj, UUID):
+            return str(obj)
         return json.JSONEncoder.default(self, obj)

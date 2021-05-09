@@ -11,4 +11,17 @@ class Card extends React.Component {
     }
 }
 
+class NoStyleCard extends React.Component {
+    render() {
+        const { className, ...newProps } = this.props;
+        return (
+            <div className={`w-full shadow-md rounded-xl border bg-white border-gray-200 overflow-hidden ${className}`} {...newProps}>
+                {this.props.children}
+            </div>
+        );
+    }
+}
+
+
 export default Card;
+export {NoStyleCard};

@@ -30,16 +30,21 @@ class PostResponseResource(Resource):
             question = questionResponse.question
             if isinstance(question, DataQuestion):
                 evaluationStrategy: AbstractDataEvaluationStrategy = getDataEvaluationStrategyByName(
-                    question.evaluationStrategy)
+                    question.evaluationStrategy
+                )
                 if evaluationStrategy is None:
+                    print("Evaluation strategy does not exist")
                     pass  # TODO do something different, delete the file etc
                 dataQuestionResponse = questionResponse.answer
                 if "data" in dataQuestionResponse and dataQuestionResponse["data"] is not None:
                     fileUUID = dataQuestionResponse["data"]["uploadId"]
                     df = pandas.read_csv(os.path.join(getFileUploadFolder(), fileUUID))
                     result = evaluationStrategy.process(df, dataQuestionResponse["data"]["metadata"])
-                    questionResponse.answer = result
+                    print("Result: ", result)
+                    questionResponse.answer["data"] = result
+                    os.remove(os.path.join(getFileUploadFolder(), fileUUID))
         newResponse.metricScores = calculateMetricScores(survey)
+        print([answer.toDictionary() for answer in newResponse.answers])
         resultClass = selectResultClass(newResponse.metricScores, newResponse.survey._evaluation)
         if resultClass:
             newResponse.surveyResult = resultClass

@@ -14,7 +14,7 @@ class MetricScore extends React.Component {
                     <div className="rounded-full w-24 h-24 bg-gradient-to-tr hover:bg-gradient-to-r from-primary-500 to-secondary-500 items-center flex justify-center">
                         <div className="rounded-full w-16 h-16 bg-white text-center text-3xl text-secondary-500 flex items-center justify-center font-bold">
                             <p className="text-transparent bg-clip-text bg-gradient-to-tr hover:bg-gradient-to-r from-primary-500 to-secondary-500 ">
-                                {this.props.metricScore.score * 100}
+                                {Math.floor(this.props.metricScore.score * 100)}
                             </p>
                         </div>
                     </div>

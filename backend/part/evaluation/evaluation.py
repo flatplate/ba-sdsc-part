@@ -55,6 +55,7 @@ def calculateListValueWithStrategy(strategy: str, scores: List[float]):
     if strategy == "last":
         return scores[-1]
 
+
 def calculateResponseMetricScore(response: QuestionResponse) -> List[IntermediaryMetricScoreResult]:
     if isinstance(response.question, MatrixQuestion):
         answerValues = {answer.value: answer.numericalValue for answer in response.question.answers}
@@ -63,7 +64,8 @@ def calculateResponseMetricScore(response: QuestionResponse) -> List[Intermediar
                                           answerValues[response.answer["data"][metricEffectGroup.fieldName]])
             for metricEffectGroup in response.question._metricEffects
             for metricEffect in metricEffectGroup.metricEffects
-            if response.answer["data"][metricEffectGroup.fieldName]
+            if response.answer["data"] and metricEffectGroup.fieldName in response.answer["data"]
+               and response.answer["data"][metricEffectGroup.fieldName]
         ]
     elif isinstance(response.question, DataQuestion):
         return [
@@ -76,16 +78,17 @@ def calculateResponseMetricScore(response: QuestionResponse) -> List[Intermediar
     elif isinstance(response.question, AnswerQuestion):
         answerValues = {answer.value: answer.numericalValue for answer in response.question.answers}
         return [
-            IntermediaryMetricScoreResult(metricEffect.metric.name,
-                                          metricEffect.weight,
-                                          calculateListValueWithStrategy(
-                                              metricEffect.strategy,
-                                              [answerValues[value] for value in response.answer["data"]]
-                                          ) if isinstance(response.answer["data"], list)
-                                          else answerValues[response.answer["data"]])
+            IntermediaryMetricScoreResult(
+                metricEffect.metric.name,
+                metricEffect.weight,
+                calculateListValueWithStrategy(
+                    metricEffect.strategy,
+                    [answerValues[value] for value in response.answer["data"]]
+                ) if isinstance(response.answer["data"], list)
+                else answerValues[response.answer["data"]])
             for metricEffectGroup in response.question._metricEffects
             for metricEffect in metricEffectGroup.metricEffects
-            if response.answer
+            if response.answer and response.answer["data"]
         ]
     return []
 
@@ -110,7 +113,7 @@ def calculateMetricConditionValue(metricScores: List[MetricScore], condition: Me
         return min(metricScoresDict.values())
     if condition.metric == "max":
         return max(metricScoresDict.values())
-    return metricScoresDict[condition.metric]
+    return metricScoresDict[condition.metric] if condition.metric in metricScoresDict else 0.0
 
 
 def evaluateResultClassCondition(metricScores: List[MetricScore], condition: MetricCondition) -> bool:

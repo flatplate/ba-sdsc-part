@@ -15,7 +15,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        this.api.checkAuthentification();
+        this.api.checkAuthentication();
         this.setState({authenticated: this.api.authenticated})
         this.api.addListener("authenticated", this.authenticationListener);
     }

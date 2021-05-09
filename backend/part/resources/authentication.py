@@ -35,7 +35,8 @@ class AuthenticationTokenResource(Resource):
     method_decorators = [authorized()]
 
     def get(self):
-        return makeResponse({"success": True, "data": request.context})
+        print(request.context)
+        return makeResponse({"success": True, "data": request.jwtData})
 
 
 class LogoutResource(Resource):

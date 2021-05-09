@@ -1,3 +1,5 @@
+import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -83,8 +85,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/responses"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-teal-lighter ml-4 " +
-                                (this.state.atTop ? "hover:text-white" : "hover:text-white")
+                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Responses
@@ -92,8 +93,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/questions"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-teal-lighter ml-4 " +
-                                (this.state.atTop ? "hover:text-white" : "hover:text-white")
+                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Questions
@@ -101,8 +101,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/surveys"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-teal-lighter ml-4 " +
-                                (this.state.atTop ? "hover:text-white" : "hover:text-white")
+                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Surveys
@@ -110,18 +109,25 @@ class NavBar extends React.Component {
                         <Link
                             to="/evaluation"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-teal-lighter ml-4 " +
-                                (this.state.atTop ? "hover:text-white" : "hover:text-white")
+                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Evaluation
                         </Link>
                     </div>
-                    <div>
+                    <div className="space-x-6 flex items-center">
+                        <div className="inline-block text-xl text-gray-800 cursor-pointer hover:text-gray-600">
+                            <Link to="/settings/account">
+                                <FontAwesomeIcon
+                                    icon={faCog}
+                                    className="transform hover:rotate-90 transition-all duration-300"
+                                />
+                            </Link>
+                        </div>
                         <div
                             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white cursor-pointer"
                             onClick={() => this.api.logout().then(() => window.location.reload())}
-                            >
+                        >
                             Logout
                         </div>
                     </div>

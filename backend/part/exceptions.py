@@ -33,6 +33,9 @@ class NoActiveSurveyException(HTTPException):
 class MetricAlreadyExistsException(HTTPException):
     pass
 
+class NotAuthorizedException(HTTPException):
+    pass
+
 errors = {
     'QuestionAlreadyExistsException': {
         'message': "A Question with the same name already exists.",
@@ -76,5 +79,9 @@ errors = {
     'MetricAlreadyExistsException': {
         'message': "A metric with the same name already exists",
         'status': 409
+    },
+    'NotAuthorizedException': {
+        'message': "Not Authorized",
+        'status': 401
     }
 }

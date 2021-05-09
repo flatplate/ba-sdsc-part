@@ -50,6 +50,8 @@ class BasicDataEvaluationStrategy(AbstractDataEvaluationStrategy):
 
     @staticmethod
     def process(df, metadata):
+        print("Basic data evaulation strategy run")
+        print(df.head())
         return {"noneRatio": 1 - df.isnull().mean().mean(), "somethingElse": 0}
 
 

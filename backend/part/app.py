@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 
 from part.util.json import CustomEncoder
+from part.util.file import deleteOldUploadedFiles
 from .database import initDatabase
 from .resources import *
 from flask_cors import CORS
@@ -9,6 +10,7 @@ from .config import initConfig
 from .config import AppConfig
 from .config import getFileUploadFolder
 from .exceptions import errors
+import schedule
 
 
 app = Flask(__name__)
@@ -16,6 +18,9 @@ api = Api(app, errors=errors)
 CORS(app)
 app.config.from_object(AppConfig)
 app.json_encoder = CustomEncoder
+
+def initCronJob():
+    schedule.every(1).day.do(deleteOldUploadedFiles)
 
 def initFolders():
     fileUploadFolderPath = getFileUploadFolder()
@@ -27,6 +32,7 @@ def init():
     initConfig()
     initDatabase()
     initFolders()
+    initCronJob()
 
 
 api.add_resource(EditQuestionResource, '/api/v1/editQuestion')
@@ -59,6 +65,12 @@ api.add_resource(DeleteEvaluationResource, '/api/v1/deleteEvaluation')
 api.add_resource(DeleteSurveyResource, '/api/v1/deleteSurvey')
 api.add_resource(LogoutResource, '/api/v1/logout')
 api.add_resource(GetResponseResource, '/api/v1/getResponse')
+api.add_resource(GetUserByIdResource, '/api/v1/getUser')
+api.add_resource(GetCurrentUserResource, '/api/v1/getCurrentUser')
+api.add_resource(GetAllUsersResource, '/api/v1/getUsers')
+api.add_resource(CreateUserResource, '/api/v1/createUser')
+api.add_resource(DeleteUserResource, '/api/v1/deleteUser')
+api.add_resource(ChangePasswordResource, '/api/v1/changePassword')
 
 if __name__ == "__main__":
     print("alksdfasdf")

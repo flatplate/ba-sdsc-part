@@ -29,8 +29,7 @@ def verify(key: bytes, password: str, saltSize=32):
         salt,
         100000
     )
-    newKey = newKeyStr
-    return newKey == key
+    return newKeyStr == key
 
 def authorized(requiredRoles: List[str] = None):
     if requiredRoles is None:
@@ -47,15 +46,17 @@ def authorized(requiredRoles: List[str] = None):
                 if not verifyTokenStructure(data):
                     raise NotAuthenticatedException()
                 for role in requiredRoles:
-                    if role not in data["roles"]:
+                    if role not in data["context"]["roles"]:
                         raise MissingUserRoleException()
                 request.context = data["context"]
+                request.jwtData = data
                 return func(*args, **kwargs)
             except jwt.ExpiredSignatureError:
                 newTokenData = getNewTokenData(token)
                 print(newTokenData)
                 newToken = getToken(newTokenData)
                 request.context = newTokenData["context"]
+                request.jwtData = newTokenData
                 res = func(*args, **kwargs)
                 res.headers["Set-Cookie"] = "jwt=" + newToken + ";Secure;HttpOnly;SameSite=Strict;Max-Age=" \
                                             + str(int(timedelta(days=30).total_seconds()))
