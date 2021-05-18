@@ -12,7 +12,7 @@ class ContactForm extends React.Component {
 
     setNewValue(id, newValue) {
         this.setState(
-            { [id]: newValue },
+            { [id]: newValue,  },
             () => this.props.onChange && this.props.onChange(this.state)
         );
     }

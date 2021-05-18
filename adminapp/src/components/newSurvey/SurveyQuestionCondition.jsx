@@ -12,14 +12,35 @@ class SurveyQuestionCondition extends React.Component {
         return (
             <div className="w-full flex items-center">
                 <div className="h-full justify-center items-center">
-                    <FontAwesomeIcon icon={faTimes} className="text-red-400 hover:text-red-600 cursor-pointer" onClick={this.props.onDelete}/>
-
+                    <FontAwesomeIcon
+                        icon={faTimes}
+                        className="text-red-400 hover:text-red-600 cursor-pointer"
+                        onClick={this.props.onDelete}
+                    />
                 </div>
-                <div className="m-2 h-full w-1/6 justify-center items-center">
-                    <p>
-                    {this.props.conditionText}
-                    </p>
-                </div>
+                {this.props.secondaryCondition ? (
+                    <div className="m-2 h-full w-1/6 justify-center items-center">
+                        <p>and</p>
+                    </div>
+                ) : (
+                    <>
+                    <div className="flex flex-grow inline-block p-1">
+                        <select
+                            name="action"
+                            id=""
+                            onChange={this.props.onActionChange}
+                            className="w-full border-gray-300 bg-green-50"
+                            value={this.props.action}
+                        >
+                            <option value={"hide"}>Hide question</option>
+                            <option value={"finish"}>Finish survey</option>
+                        </select>
+                    </div>
+                    <div className="m-2 h-full w-1/16 justify-center items-center">
+                        <p>if</p>
+                    </div>
+                    </>
+                )}
                 <div className="flex flex-grow inline-block p-1">
                     <select
                         name="question"
@@ -29,9 +50,7 @@ class SurveyQuestionCondition extends React.Component {
                         value={this.props.condition.question._id}
                     >
                         {this.props.questions.map((question) => (
-                            <option value={question.question._id}>
-                                {question.question._name}
-                            </option>
+                            <option value={question.question._id}>{question.question._name}</option>
                         ))}
                     </select>
                 </div>
@@ -60,7 +79,9 @@ class SurveyQuestionCondition extends React.Component {
                     </select>
                 </div>
                 <div className="flex flex-initial m-1">
-                    <Button textSize="text-sm" onClick={this.props.onAddInternalCondition}>And</Button>
+                    <Button textSize="text-sm" onClick={this.props.onAddInternalCondition}>
+                        And
+                    </Button>
                 </div>
             </div>
         );

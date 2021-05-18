@@ -49,16 +49,16 @@ class NavBar extends React.Component {
         return (
             <nav
                 className={
-                    "flex w-full fixed items-center z-10 transition-all duration-500 top-0 justify-between flex-wrap bg-primary-700 " +
+                    "flex w-full fixed items-center z-10 transition-all duration-500 top-0 justify-between flex-wrap bg-primary-600 " +
                     (!this.state.atTop
-                        ? "bg-opacity-25 p-2"
-                        : " from-primary-600 to-primary-500 bg-gradient-to-r  p-6 shadow-md")
+                        ? " bg-opacity-50 p-2 text-white"
+                        : " p-6 shadow-md text-white")
                 }
             >
                 <Link to="/">
                     <div
                         className={
-                            "flex items-center flex-no-shrink mr-6 " + (this.state.atTop ? "text-white" : "text-black")
+                            "flex items-center flex-no-shrink mr-6 "
                         }
                     >
                         <span className="font-semibold text-xl tracking-tight">SDSC PART</span>
@@ -85,7 +85,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/responses"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
+                                "block mt-4 lg:inline-block lg:mt-0 ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Responses
@@ -93,7 +93,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/questions"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
+                                "block mt-4 lg:inline-block lg:mt-0 ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Questions
@@ -101,7 +101,7 @@ class NavBar extends React.Component {
                         <Link
                             to="/surveys"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
+                                "block mt-4 lg:inline-block lg:mt-0 ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Surveys
@@ -109,14 +109,14 @@ class NavBar extends React.Component {
                         <Link
                             to="/evaluation"
                             className={
-                                "block mt-4 lg:inline-block lg:mt-0 text-white ml-4 hover:text-gray-200 font-bold transition-all duration-200"
+                                "block mt-4 lg:inline-block lg:mt-0 ml-4 hover:text-gray-200 font-bold transition-all duration-200"
                             }
                         >
                             Evaluation
                         </Link>
                     </div>
                     <div className="space-x-6 flex items-center">
-                        <div className="inline-block text-xl text-gray-800 cursor-pointer hover:text-gray-600">
+                        <div className="inline-block text-xl text-white cursor-pointer hover:text-gray-300">
                             <Link to="/settings/account">
                                 <FontAwesomeIcon
                                     icon={faCog}

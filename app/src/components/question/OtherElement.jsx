@@ -60,7 +60,7 @@ class OtherElement extends React.Component {
                             onKeyDown={this.handleKeyDown}
                             onBlur={this.onBlur}
                         >
-                            {this.state.value}
+                            {this.state.value || "Type in your answer"}
                         </div>
                     </Button>
                 </div>

@@ -6,6 +6,7 @@ import OtherElement from "./OtherElement";
 import { Button } from "../button";
 import MultipleChoiceScrollField from "./MultipleChoiceScrollField";
 import QuestionContainer from "./QuestionContainer";
+import QuestionError from "./QuestionError";
 
 class OrderedMultipleAnswerQuestion extends React.Component {
     constructor(props, context) {
@@ -13,10 +14,12 @@ class OrderedMultipleAnswerQuestion extends React.Component {
         this.state = {
             selected: [],
             answers: this.props.question.answers,
+            error: null
         };
         this.toggleValue = this.toggleValue.bind(this);
         this.setStateWithOnChange = this.setStateWithOnChange.bind(this);
         this.addAnswer = this.addAnswer.bind(this);
+        this.advance = this.advance.bind(this);
     }
 
     // TODO Implement "Please select at least once"
@@ -25,6 +28,10 @@ class OrderedMultipleAnswerQuestion extends React.Component {
         if (this.state.selected.indexOf(value) === -1) {
             // Not selected => select
             // TODO if number of selected values is going to exceed maximum possible values show error & deny selection
+            if (this.state.selected.length === 3) {
+                this.setState({error: "Please select maximum 3"});
+                return;
+            }
             this.state.selected.push(value);
             this.setStateWithOnChange({});
         } else {
@@ -56,11 +63,21 @@ class OrderedMultipleAnswerQuestion extends React.Component {
     }
 
     addAnswer(answerText) {
-        console.log(answerText);
         const newAnswers = Array.from(this.state.answers);
         newAnswers.push({ text: answerText, value: answerText });
         this.setState({ answers: newAnswers });
     }
+
+
+    advance() {
+        if (this.state.selected.length === 0) {
+            this.setState({ error: "Please select at least one option" });
+            return;
+        }
+
+        this.props.advance();
+    }
+
 
     render() {
         return (
@@ -70,6 +87,7 @@ class OrderedMultipleAnswerQuestion extends React.Component {
                         {this.props.question.text}
                     </QuestionTextWrapper>
                 )}
+                {this.state.error && <QuestionError>{this.state.error}</QuestionError>}
                 <div>
                     <MultipleChoiceScrollField>
                         {this.state.answers.map((answer, index) => {
@@ -105,7 +123,7 @@ class OrderedMultipleAnswerQuestion extends React.Component {
                     </MultipleChoiceScrollField>
                 </div>
                 <div className="my-8 float-right">
-                    <Button onClick={this.props.advance}>Continue</Button>
+                    <Button onClick={this.advance}>Continue</Button>
                 </div>
             </QuestionContainer>
         );

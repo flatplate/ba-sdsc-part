@@ -29,7 +29,7 @@ class App extends React.Component {
     render() {
         return (
             <AppContext.Provider value={{ api: this.api }}>
-                <div className="App justify-center flex items-center mt-24">
+                <div className="App justify-center flex pt-24 bg-gray-50 min-h-screen">
                     <AlertComponent />
                     <BrowserRouter basename="/admin">
                         <Switch>
@@ -38,7 +38,7 @@ class App extends React.Component {
                             </Route>
                             <Route>
                                 <NavBar api={this.api} />
-                                <div className="w-full lg:w-256 xl:w-256 2xl:w-256 3xl:w-256 p-10">
+                                <div className="w-full lg:w-256 xl:w-256 2xl:w-256 3xl:w-256 p-10 text-gray-600">
                                     <Switch>
                                         <PrivateRoute path="/questions/new" api={this.api}>
                                             <NewQuestion api={this.api} />

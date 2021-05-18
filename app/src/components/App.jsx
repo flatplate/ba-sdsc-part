@@ -22,7 +22,7 @@ class App extends React.Component {
                 <TooltipBar />
                 <ProgressBar />
                 <BrowserRouter>
-                    <div className="container space-y-6 justify-center flex items-center h-screen">
+                    <div className="container space-y-6 justify-center flex items-center h-screen text-gray-600">
                         <div className="w-auto">
                             <Route path="/" exact>
                                 <Landing />

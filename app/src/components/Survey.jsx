@@ -51,7 +51,8 @@ class Survey extends React.Component {
             const actionsFromLogic = this.getActionsFromLogic(possibleNextQuestion.logic);
 
             if (actionsFromLogic.includes("finish")) {
-                break;
+                this.props.history.push("/");
+                return;
             }
 
             if (!actionsFromLogic.includes("hide")) {

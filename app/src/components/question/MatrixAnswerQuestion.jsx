@@ -1,12 +1,10 @@
 import React from "react";
 import MatrixAnswerQuestionRow from "./MatrixAnswerQuestionRow";
-import QuestionAnswerWrapper from "./QuestionAnswerWrapper";
-import QuestionAnswer from "./QuestionAnswer";
-import QuestionText from "./QuestionText";
 import QuestionTextWrapper from "./QuestionTextWrapper";
 import { Button } from "../button";
 import MatrixQuestionRowText from "./MatrixQuestionRowText";
 import QuestionContainer from "./QuestionContainer";
+import QuestionError from "./QuestionError";
 
 class MatrixAnswerQuestion extends React.Component {
     constructor(props, context) {
@@ -14,6 +12,7 @@ class MatrixAnswerQuestion extends React.Component {
         this.state = { selected: {} };
         this.setSelectedAnswerForRow = this.setSelectedAnswerForRow.bind(this);
         this.setStateWithOnChange = this.setStateWithOnChange.bind(this);
+        this.advance = this.advance.bind(this);
     }
 
     // TODO Implement "Please select at least one"
@@ -32,13 +31,22 @@ class MatrixAnswerQuestion extends React.Component {
         );
     }
 
+    advance() {
+        if (Object.keys(this.state.selected).length !== this.props.question.rows.length) {
+            this.setState({error: "Please select all possible answers."});
+            return;
+        }
+
+        this.props.advance();
+    }
+
     render() {
         return (
             <QuestionContainer>
                 <QuestionTextWrapper>
                     {this.props.question.text}
                 </QuestionTextWrapper>
-
+                {this.state.error && <QuestionError>{this.state.error}</QuestionError>}
                 <div className="space-y-6">
                     {this.props.question.rows.map((row) => (
                         <MatrixAnswerQuestionRow
@@ -55,7 +63,7 @@ class MatrixAnswerQuestion extends React.Component {
                     ))}
                 </div>
                 <div className="my-8 float-right">
-                    <Button onClick={this.props.advance}>Continue</Button>
+                    <Button onClick={this.advance}>Continue</Button>
                 </div>
             </QuestionContainer>
         );
