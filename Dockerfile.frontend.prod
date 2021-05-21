@@ -1,6 +1,7 @@
 # build environment
 # pull official base image
 FROM node:13.12.0-alpine as build
+RUN apk add --no-cache git
 
 # set working directory
 WORKDIR /react/app
@@ -13,8 +14,8 @@ COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
 # add app
 COPY ./app ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install --verbose
+RUN npm install react-scripts@3.4.1 -g --verbose
 
 
 RUN npm run build
@@ -29,8 +30,8 @@ COPY ./adminapp/package.json ./
 COPY ./adminapp/package-lock.json ./
 # add app
 COPY ./adminapp ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install --verbose
+RUN npm install react-scripts@3.4.1 -g --verbose
 
 
 RUN npm run build
