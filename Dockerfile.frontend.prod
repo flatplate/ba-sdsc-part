@@ -14,8 +14,8 @@ COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
 # add app
 COPY ./app ./
-RUN npm install --verbose
-RUN npm install react-scripts@3.4.1 -g --verbose
+RUN npm install 
+RUN npm install react-scripts@3.4.1 -g 
 
 
 RUN npm run build
@@ -30,8 +30,8 @@ COPY ./adminapp/package.json ./
 COPY ./adminapp/package-lock.json ./
 # add app
 COPY ./adminapp ./
-RUN npm install --verbose
-RUN npm install react-scripts@3.4.1 -g --verbose
+RUN npm install 
+RUN npm install react-scripts@3.4.1 -g 
 
 
 RUN npm run build

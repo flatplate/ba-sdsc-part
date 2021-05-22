@@ -7,6 +7,7 @@ import QuestionTextWrapper from "./QuestionTextWrapper";
 import { TooltipHeader, tooltipStore, TooltipText } from "../TooltipBar";
 import OtherElement from "./OtherElement";
 import QuestionContainer from "./QuestionContainer";
+import MultipleChoiceScrollField from './MultipleChoiceScrollField';
 
 class SingleAnswerMultipleChoiceQuestion extends React.Component {
     constructor(props, context) {
@@ -57,20 +58,20 @@ class SingleAnswerMultipleChoiceQuestion extends React.Component {
                         {this.props.question.text}
                     </QuestionTextWrapper>
                 )}
-                <div>
+                <MultipleChoiceScrollField>
                     {this.state.answers.map((answer, index) => (
                         <QuestionAnswerWrapper
-                            key={this.props.question._id + "_answer_" + index}
-                            answer={answer}
-                            onClick={() => this.onAnswerClick(answer.value)}
+                        key={this.props.question._id + "_answer_" + index}
+                        answer={answer}
+                        onClick={() => this.onAnswerClick(answer.value)}
                         />
-                    ))}
+                        ))}
                     {this.props.other && (
                         <OtherElement onAnswerAdded={this.addAnswer}>
                             Select Other
                         </OtherElement>
                     )}
-                </div>
+                </MultipleChoiceScrollField>
                 {this.props.children}
             </QuestionContainer>
         );
