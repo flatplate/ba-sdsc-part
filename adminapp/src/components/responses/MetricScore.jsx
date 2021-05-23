@@ -8,10 +8,10 @@ class MetricScore extends React.Component {
 
     render() {
         return (
-            <Card className="flex-grow items-center justify-center text-center">
+            <Card className="items-center justify-center text-center">
                 <div className="block w-full font-bold text-xl">{this.props.metricScore.metric.name}</div>
-                <div className="flex w-full justify-center">
-                    <div className="rounded-full w-24 h-24 bg-gradient-to-tr hover:bg-gradient-to-r from-primary-500 to-secondary-500 items-center flex justify-center">
+                <div className="flex w-full justify-center relative bottom-0">
+                    <div className="rounded-full w-24 h-24 bg-gradient-to-tr hover:bg-gradient-to-r from-primary-500 to-secondary-500 items-center flex justify-center ">
                         <div className="rounded-full w-16 h-16 bg-white text-center text-3xl text-secondary-500 flex items-center justify-center font-bold">
                             <p className="text-transparent bg-clip-text bg-gradient-to-tr hover:bg-gradient-to-r from-primary-500 to-secondary-500 ">
                                 {Math.floor(this.props.metricScore.score * 100)}

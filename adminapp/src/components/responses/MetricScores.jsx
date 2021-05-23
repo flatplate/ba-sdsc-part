@@ -8,7 +8,7 @@ class MetricScores extends React.Component {
 
     render() {
         return (
-            <div className="flex flex-row space-x-4">
+            <div className="grid grid-cols-5 gap-4">
                 {this.props.metricScores.map((metricScore) => (
                     <MetricScore metricScore={metricScore} key={metricScore.name}/>
                 ))}
