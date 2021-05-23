@@ -19,7 +19,7 @@ import AppContext from "./AppContext";
 class App extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.api = new PartAPI("/api/v1");
+        this.api = new PartAPI((process.env.REACT_APP_PART_HOST || "") + "/api/v1");
     }
 
     componentDidMount() {

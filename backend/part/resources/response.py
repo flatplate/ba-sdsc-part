@@ -1,7 +1,8 @@
 import os
 from typing import List
 
-from bson import ObjectId
+from io import StringIO
+import csv
 from flask_restful import Resource, reqparse
 
 from part.authentication import authorized
@@ -74,3 +75,38 @@ class GetResponseResource(Resource):
         id_ = args["id"]
         response = Response.getById(id_)
         return makeResponse({"data": response.toDictionary(omitPrivateFields=False)})
+
+
+class ResponseCsvExportResource(Resource):
+    method_decorators = [authorized()]
+
+    def get(self):
+        responses: List[Response] = Response.getAllSortedByTimestamp()
+        mappedResponses = [mapResponseToSimpleJson(response) for response in responses]
+        fieldNames = {key for response in mappedResponses for key in response}
+        stringOutput = StringIO()
+        writer = csv.DictWriter(stringOutput, fieldnames=fieldNames)
+        writer.writeheader()
+        for response in mappedResponses:
+            writer.writerow(response)
+        return makeResponse(body=stringOutput.getvalue(),
+                            contentType="text/csv",
+                            headers={"Content-Disposition": "attachment;filename=responses.csv"})
+
+
+
+def mapResponseToSimpleJson(response: Response) -> dict:
+    simpleJsonDict = {"createdAt": response._createdAt}
+    for answer in response.answers:
+        simpleJsonDict[answer.question._name] = answer.answer
+    return flattenDict(simpleJsonDict)
+
+def flattenDict(dict_: dict, currentKey="") -> dict:
+    flatDict = {}
+    for key, value in dict_.items():
+        dictKey = currentKey + " " + key if currentKey else key
+        if isinstance(value, dict):
+            flatDict.update(flattenDict(value, dictKey))
+        else:
+            flatDict[dictKey] = value
+    return flatDict

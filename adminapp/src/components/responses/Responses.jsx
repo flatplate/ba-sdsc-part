@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ExportFloatingButton from './ExportFloatingButton';
 import ResponseCard from "./ResponseCard";
 
 class Responses extends React.Component {
@@ -24,6 +25,7 @@ class Responses extends React.Component {
                         </div>
                     ))}
                 </div>
+                <ExportFloatingButton api={this.props.api} />
             </div>
         );
     }
