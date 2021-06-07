@@ -39,8 +39,6 @@ class MultipleAnswerQuestion extends React.Component {
         );
     }
 
-    // TODO Maybe look at "Please select at least once"
-
     toggleValue(value) {
         if (this.state.selected.indexOf(value) === -1) {
             // Not selected => select
