@@ -68,7 +68,7 @@ class SingleAnswerMultipleChoiceQuestion extends React.Component {
                         ))}
                     {this.props.other && (
                         <OtherElement onAnswerAdded={this.addAnswer}>
-                            Select Other
+                            Anderes
                         </OtherElement>
                     )}
                 </MultipleChoiceScrollField>

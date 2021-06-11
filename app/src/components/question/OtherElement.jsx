@@ -6,7 +6,7 @@ import QuestionAnswerWrapper from "./QuestionAnswerWrapper";
 class OtherElement extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { value: "Other" };
+        this.state = { value: "Anderes" };
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.onBlur = this.onBlur.bind(this);
     }
@@ -21,7 +21,7 @@ class OtherElement extends React.Component {
             this.props.onAnswerAdded &&
                 this.props.onAnswerAdded(e.target.textContent);
             e.target.blur();
-            this.setState({ value: "Other" });
+            this.setState({ value: "Anderes" });
         }
     }
 
@@ -29,7 +29,7 @@ class OtherElement extends React.Component {
         console.log("onBlur");
         console.log(e);
         if (e.target.textContent === "") {
-            this.setState({value: "Other"})
+            this.setState({value: "Anderes"})
         }
     }
 
@@ -60,7 +60,7 @@ class OtherElement extends React.Component {
                             onKeyDown={this.handleKeyDown}
                             onBlur={this.onBlur}
                         >
-                            {this.state.value || "Type in your answer"}
+                            {this.state.value || "Schreiben Sie hier Ihre Antwort"}
                         </div>
                     </Button>
                 </div>

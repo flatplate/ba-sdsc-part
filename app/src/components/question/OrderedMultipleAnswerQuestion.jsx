@@ -29,7 +29,7 @@ class OrderedMultipleAnswerQuestion extends React.Component {
             // Not selected => select
             // TODO if number of selected values is going to exceed maximum possible values show error & deny selection
             if (this.state.selected.length === 3) {
-                this.setState({error: "Please select maximum 3"});
+                this.setState({error: "Bitte wählen Sie maximal 3 Optionen aus"});
                 return;
             }
             this.state.selected.push(value);
@@ -71,7 +71,7 @@ class OrderedMultipleAnswerQuestion extends React.Component {
 
     advance() {
         if (this.state.selected.length === 0) {
-            this.setState({ error: "Please select at least one option" });
+            this.setState({ error: "Bitte mindestens eine Option auswählen" });
             return;
         }
 
@@ -117,13 +117,13 @@ class OrderedMultipleAnswerQuestion extends React.Component {
                         })}
                         {this.props.other && (
                             <OtherElement onAnswerAdded={this.addAnswer}>
-                                Other
+                                Anderes
                             </OtherElement>
                         )}
                     </MultipleChoiceScrollField>
                 </div>
                 <div className="my-8 float-right">
-                    <Button onClick={this.advance}>Continue</Button>
+                    <Button onClick={this.advance}>Weiter</Button>
                 </div>
             </QuestionContainer>
         );

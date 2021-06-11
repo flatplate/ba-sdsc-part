@@ -21,8 +21,7 @@ class ContactForm extends React.Component {
         return (
             <div className="w-128 p-6">
                 <QuestionTextWrapper>
-                    Please fill out your contact information so that we can
-                    reach you
+                    Bitte tragen Sie Ihre Kontaktinformationen ein, damit wir Sie kontaktieren können
                 </QuestionTextWrapper>
                 <div className="px-6 space-y-8">
                     {this.props.question.answers.map((answer) => (
@@ -45,14 +44,12 @@ class ContactForm extends React.Component {
                             this.setState({ legalstuff: val.target.checked })
                         }
                     >
-                        I accept that my contact information will be saved and
-                        SDSC-BW can contact me using this information (If more
-                        info needed will just change this
+                        Ich akzeptiere dass meine Kontaktinformationen gespeichert werden und dass SDSC-BW diese Daten benutzen kann um mich zu kontaktieren
                     </CheckBoxWithLabel>
                 </div>
 
                 <div className="my-8 float-right">
-                    <Button onClick={this.props.advance}>Continue</Button>
+                    <Button onClick={this.props.advance}>Weiter</Button>
                 </div>
             </div>
         );

@@ -24,7 +24,7 @@ class DataModelTableQuestion extends React.Component {
                             onClick={this.props.advance}
                             disabled={!this.props.canAdvance}
                         >
-                            Continue
+                            Weiter
                         </Button>
                     </div>
                 </div>

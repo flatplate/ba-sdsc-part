@@ -12,14 +12,11 @@ class Landing extends React.Component {
         return (
             <div className="w-128">
                 <QuestionTextWrapper>
-                    Welcome to SDSC-BW potential analysis readiness tool. This tool will help you determine how you find the best fit for your business
+                    Wilkommen zu dem SDSC-BW Potentialanalysebereitschaftstool. Dieses Tool wird Ihnen helfen die beste Loesung fuer Ihr Unternehmen zu finden.
                 </QuestionTextWrapper>
                 <div>
                     <Link to="/survey">
-                        <QuestionAnswerWrapper primary answer={{text: "Start new assessment"}} />
-                    </Link>
-                    <Link to="/password">
-                        <QuestionAnswerWrapper answer={{text: "Continue with password"}} />
+                        <QuestionAnswerWrapper primary answer={{text: "Ein neues Assessment starten"}} />
                     </Link>
                 </div>
             </div>

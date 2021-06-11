@@ -70,19 +70,19 @@ class DataModelTable extends React.Component {
                         <table class="table-auto w-full text-center text-lg text-gray-700 font-light">
                             <thead>
                                 <th>
-                                    Column Name{" "}
+                                    Spaltenname{" "}
                                     <FontAwesomeIcon icon={faInfoCircle} />{" "}
                                 </th>
                                 <th>
-                                    Data Type{" "}
+                                    Datentyp{" "}
                                     <FontAwesomeIcon icon={faInfoCircle} />
                                 </th>
                                 <th>
-                                    Influence Source{" "}
+                                    Einflussquelle{" "}
                                     <FontAwesomeIcon icon={faInfoCircle} />
                                 </th>
                                 <th>
-                                    Influence Target{" "}
+                                    Einflussziel{" "}
                                     <FontAwesomeIcon icon={faInfoCircle} />
                                 </th>
                             </thead>

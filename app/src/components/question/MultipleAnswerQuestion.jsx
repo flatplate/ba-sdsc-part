@@ -33,7 +33,7 @@ class MultipleAnswerQuestion extends React.Component {
         }
         return (
             <>
-                <TooltipHeader>What does this mean?</TooltipHeader>
+                <TooltipHeader>Was bedeutet das?</TooltipHeader>
                 <TooltipText>{this.props.question.tooltip}</TooltipText>
             </>
         );
@@ -57,7 +57,7 @@ class MultipleAnswerQuestion extends React.Component {
 
     advance() {
         if (this.state.selected.length === 0) {
-            this.setState({ error: "Please select at least one option" });
+            this.setState({ error: "Bitte mindestens eine Option auswählen" });
             return;
         }
 
@@ -81,10 +81,10 @@ class MultipleAnswerQuestion extends React.Component {
                             ></QuestionAnswerWrapper>
                         );
                     })}
-                    {this.props.other && <OtherElement onAnswerAdded={this.addAnswer}>Select Other</OtherElement>}
+                    {this.props.other && <OtherElement onAnswerAdded={this.addAnswer}>Anderes</OtherElement>}
                 </MultipleChoiceScrollField>
                 <div className="my-8 float-right">
-                    <Button onClick={this.advance}>Continue</Button>
+                    <Button onClick={this.advance}>Weiter</Button>
                 </div>
             </QuestionContainer>
         );

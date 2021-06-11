@@ -208,7 +208,7 @@ class NewSurvey extends React.Component {
                             />
                         </div>
                         <div className="flex justify-end items-center">
-                            <Button onClick={this.saveSurvey}>Save</Button>
+                            <Button onClick={this.saveSurvey}>Speichern</Button>
                         </div>
                     </div>
 
@@ -222,7 +222,7 @@ class NewSurvey extends React.Component {
                                 }`}
                             >
                                 {this.state.surveyData.questions.length === 0 && (
-                                    <div className="w-full text-center">Drag and drop the quesitons here</div>
+                                    <div className="w-full text-center">Ziehen Sie eine Datei per Drag {"&"} Drop oder klicken Sie hier, um sie hochzuladen </div>
                                 )}
                                 {this.state.surveyData.questions.map((question, index) => (
                                     <Draggable draggableId={"survey_" + question.id} index={index} key={question.id}>

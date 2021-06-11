@@ -33,7 +33,7 @@ class MatrixAnswerQuestion extends React.Component {
 
     advance() {
         if (Object.keys(this.state.selected).length !== this.props.question.rows.length) {
-            this.setState({error: "Please select all possible answers."});
+            this.setState({error: "Bitte wählen Sie alle möglichen Antworten aus"});
             return;
         }
 
@@ -63,7 +63,7 @@ class MatrixAnswerQuestion extends React.Component {
                     ))}
                 </div>
                 <div className="my-8 float-right">
-                    <Button onClick={this.advance}>Continue</Button>
+                    <Button onClick={this.advance}>Weiter</Button>
                 </div>
             </QuestionContainer>
         );

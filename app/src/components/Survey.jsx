@@ -66,7 +66,6 @@ class Survey extends React.Component {
     finishSurvey() {
         this.api.postResponse(this.state.survey._id, this.state.response).then((data) => this.props.onResultReceived(data.result));
         this.props.history.push("/result")
-        console.log("Survey finished");
     }
 
     getActionsFromLogic(logic) {
@@ -79,10 +78,9 @@ class Survey extends React.Component {
         switch (operator) {
             case "is":
                 return currentValue === answer;
-            case "!=": // TODO Fix this
+            case "!=":
                 return currentValue !== answer;
             default:
-                console.error("Unknown operator detected: " + operator);
                 return false;
         }
     }
